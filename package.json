@@ -1,0 +1,18 @@
+{
+  "name": "questionario-carrinho-api",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@googleapis/sheets": "^3.0.2"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^1.0.0",
+    "@types/node": "^18.0.6",
+    "typescript": "^4.7.4"
+  }
+}
