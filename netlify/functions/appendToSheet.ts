@@ -5,6 +5,7 @@ const handler: Handler = async (event, context) => {
   const body = event.body ? JSON.parse(event.body) : null;
 
   console.log("ctx", context.clientContext);
+  console.log("process.env", process.env);
 
   if (!body?.spreadsheet_id) {
     return {
