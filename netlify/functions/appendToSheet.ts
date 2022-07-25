@@ -1,11 +1,8 @@
-import sheets from "@googleapis/sheets";
+import { auth, sheets } from "@googleapis/sheets";
 import { Handler } from "@netlify/functions";
 
 const handler: Handler = async (event, context) => {
   const body = event.body ? JSON.parse(event.body) : null;
-
-  console.log("ctx", context.clientContext);
-  console.log("process.env", process.env);
 
   if (!body?.spreadsheet_id) {
     return {
@@ -37,14 +34,14 @@ const handler: Handler = async (event, context) => {
     };
   }
 
-  const auth = new sheets.auth.GoogleAuth({
+  const googleAuth = new auth.GoogleAuth({
     credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS),
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 
-  const authClient = await auth.getClient();
+  const authClient = await googleAuth.getClient();
 
-  const client = sheets.sheets({
+  const client = sheets({
     version: "v4",
     auth: authClient,
   });
