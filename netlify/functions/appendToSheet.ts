@@ -4,6 +4,8 @@ import { Handler } from "@netlify/functions";
 const handler: Handler = async (event, context) => {
   const body = event.body ? JSON.parse(event.body) : null;
 
+  console.log("ctx", context.clientContext);
+
   if (!body?.spreadsheet_id) {
     return {
       statusCode: 400,
