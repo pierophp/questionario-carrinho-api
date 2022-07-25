@@ -27,7 +27,7 @@ const handler: Handler = async (event, context) => {
     };
   }
 
-  if (!context.clientContext?.GOOGLE_CREDENTIALS) {
+  if (!process.env?.GOOGLE_CREDENTIALS) {
     return {
       statusCode: 500,
       body: JSON.stringify({ message: "GOOGLE_CREDENTIALS not configured" }),
@@ -38,7 +38,7 @@ const handler: Handler = async (event, context) => {
   }
 
   const auth = new sheets.auth.GoogleAuth({
-    credentials: JSON.parse(context.clientContext.GOOGLE_CREDENTIALS),
+    credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS),
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 
